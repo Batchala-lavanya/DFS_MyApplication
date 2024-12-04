@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: MyApplication
+  cloud:
+    openfeign:
+      enabled: true
+
+first:
+  app:
+    url: http://localhost:8088
+
+server:
+  port: 8089
