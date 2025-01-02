@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.demo.task.DTO.UserDto;
+import com.demo.task.Service.ServiceImpl;
 
 @FeignClient(name = "firstAppClient", url = "${first.app.url}")
 public interface FirstAppByFeignClient {

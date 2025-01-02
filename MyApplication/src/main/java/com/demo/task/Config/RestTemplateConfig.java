@@ -18,11 +18,11 @@ public class RestTemplateConfig {
 	
 	public ResponseEntity<UserDto> getUserById(Integer id) {
         String url = "http://localhost:8088/mytask/retriveUser/" + id;
-        try {
+        //try {
             return restTemplate.getForEntity(url, UserDto.class);
-        } catch (HttpStatusCodeException e) {
-            return ResponseEntity.status(e.getStatusCode()).body(null);
-        }
+        //} catch (HttpStatusCodeException e) {
+           // return ResponseEntity.status(e.getStatusCode()).build();
+        //}
     }
 
 }

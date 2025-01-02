@@ -1,0 +1,99 @@
+{
+  "consumer": {
+    "name": "consumer-user"
+  },
+  "interactions": [
+    {
+      "description": "A request to retrieve user with ID 1",
+      "key": "f6cf2e85",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "User with ID 1 exists"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/mytask/retrieveUser/1"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "email": "lavanya13@gmail.com",
+            "name": "lavanya13",
+            "password": "lavanya13",
+            "userid": 1
+          },
+          "contentType": "application/json; charset=UTF-8",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json; charset=UTF-8"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.email": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.password": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.userid": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            }
+          },
+          "header": {
+            "Content-Type": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "application/json(;\\s?charset=[\\w\\-]+)?"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      },
+      "transport": "https",
+      "type": "Synchronous/HTTP"
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.5.8"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "Provider-user"
+  }
+}

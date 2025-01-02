@@ -1,0 +1,64 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8089
+  description: Generated server url
+paths:
+  /api/user/getUserByIdRestTemplate/{id}:
+    get:
+      tags:
+      - user-controller
+      operationId: getUserByIdRestTemplate
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserDto"
+  /api/user/getUserByIdFeign/{id}:
+    get:
+      tags:
+      - user-controller
+      operationId: getUserByIdFeign
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/UserDto"
+components:
+  schemas:
+    UserDto:
+      required:
+      - name
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int32
+        name:
+          maxLength: 100
+          minLength: 3
+          type: string
+        email:
+          type: string
+        password:
+          type: string

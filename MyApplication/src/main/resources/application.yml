@@ -5,9 +5,41 @@ spring:
     openfeign:
       enabled: true
 
+resilience4j:
+  circuitbreaker:
+    instances:
+      getUserByIdCB:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        slidingWindowSize: 100
+        waitDurationInOpenState: 5000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - circuitbreakers
+  health:
+    circuitbreakers:
+      enabled: true
+
 first:
   app:
     url: http://localhost:8088
 
 server:
   port: 8089
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html 
+    
+    
+
+logging:
+  level:
+    io.github.resilience4j: DEBUG
